@@ -1,0 +1,137 @@
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, h1, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    border: 0 none;
+    font: inherit;
+    margin: 0;
+    padding: 0;
+    vertical-align: baseline;
+}
+
+*, *:before, *:after {
+    -moz-box-sizing: border-box; 
+    -webkit-box-sizing: border-box; 
+    box-sizing: border-box;
+}
+
+body{ 
+    margin:0;
+	padding: 20px;
+    font-family: "Roboto";
+}
+
+
+h1{
+    font-weight: 100;
+    font-size: 20px;
+}
+
+
+.wrapper{
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.list .item{
+    margin: 0 0 10px 0;
+    background-color: #a7a37e;
+    padding: 20px; 
+    position: relative;
+    font-weight: 100;
+    color: #fff;
+    text-shadow: 1px 1px 1px rgba(0,0,0, .2);
+    transition: all 0.5s ease-out;
+}
+
+.list .item:hover{
+    background: #999573;
+}
+
+.list .item .title{
+    font-weight: normal;
+}
+
+
+
+.list .item .delete{
+    position: absolute;
+    height: 30px;
+    width: 30px;
+    right: 10px;
+    top: 10px;
+    cursor:pointer;
+    text-align: center;
+}
+
+.list .item .delete i{
+    display: inline-block;
+    margin-top: 5px;
+}
+
+.list .item .edit{
+    position: absolute;
+    height: 30px;
+    width: 30px;
+    right: 10px;
+    top: 45px;
+    cursor:pointer;
+    text-align: center;
+}
+
+.list .item .edit i{
+    display: inline-block;
+    margin-top: 5px;
+}
+
+
+.list .item .delete:hover, .list .item .edit:hover{
+    color: red;
+}
+
+form{
+    padding: 0 20px 20px 20px;
+    margin: 0 0 20px 0;
+    background: #efecca;
+}
+
+form label{
+    display: block;
+    font-weight: 600;
+    padding-bottom: 5px;
+    padding-top: 20px;
+
+}
+
+form .report{
+    color: #c54f16;
+}
+
+input[type="text"], textarea{
+    border: none;
+    font-size: 14px;
+    font-family: Roboto;
+    width: 100%;
+}
+
+input[type="text"]{
+    height: 30px;
+    padding: 0 10px;
+}
+
+textarea{
+    height: 60px;
+    padding: 10px;   
+}
+
+input[type="submit"]{
+    font-size: 16px;
+    font-family: Roboto;
+    background-color: #046380;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor:pointer;
+    transition: all 0.5s ease-out;
+    margin-top:20px;
+}
+input[type="submit"]:hover{
+    background-color: #0d3c4b;
+}
