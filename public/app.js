@@ -4,7 +4,7 @@
  */
 
 
-var _app_url = "http://localhost:3000/";
+var _app_url = "http://node-react-todo.herokuapp.com/";
 
 
 // -----------------------------------------------------
