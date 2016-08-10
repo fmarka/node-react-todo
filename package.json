@@ -1,5 +1,5 @@
 {
-  "name": "Todo list",
+  "name": "node-react-todo",
   "version": "1.0.0",
   "description": "Backend node app",
   "main": "server.js",
