@@ -23,7 +23,7 @@ _reactDom2.default.render(_react2.default.createElement(_TodoApp2.default, { ite
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+  value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -49,55 +49,53 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var TodoApp = function (_Component) {
-	_inherits(TodoApp, _Component);
+  _inherits(TodoApp, _Component);
 
-	function TodoApp(props) {
-		_classCallCheck(this, TodoApp);
+  function TodoApp(props) {
+    _classCallCheck(this, TodoApp);
 
-		var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(TodoApp).call(this, props));
+    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(TodoApp).call(this, props));
 
-		_this.state = {
-			items: props.items
-		};
+    _this.state = {
+      items: props.items
+    };
+    _this.setItems = _this.setItems.bind(_this);
+    _this.fillForm = _this.fillForm.bind(_this);
+    return _this;
+  }
 
-		_this.setItems = _this.setItems.bind(_this);
-		_this.fillForm = _this.fillForm.bind(_this);
+  _createClass(TodoApp, [{
+    key: "setItems",
+    value: function setItems(items) {
+      this.setState({
+        items: items
+      });
+    }
+  }, {
+    key: "fillForm",
+    value: function fillForm(item) {
+      var form = this.refs.todoForm;
+      form.setState({
+        title: item.title,
+        text: item.text,
+        edit: true,
+        id: item._id
+      });
+      window.scrollTo(0, 0);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return _react2.default.createElement(
+        "div",
+        null,
+        _react2.default.createElement(_TodoForm2.default, { items: this.state.items, setItems: this.setItems, ref: "todoForm" }),
+        _react2.default.createElement(_TodoList2.default, { items: this.state.items, setItems: this.setItems, fillForm: this.fillForm })
+      );
+    }
+  }]);
 
-		return _this;
-	}
-
-	_createClass(TodoApp, [{
-		key: "setItems",
-		value: function setItems(items) {
-			this.setState({
-				items: items
-			});
-		}
-	}, {
-		key: "fillForm",
-		value: function fillForm(item) {
-			var form = this.refs.todoForm;
-			form.setState({
-				title: item.title,
-				text: item.text,
-				edit: true,
-				id: item._id
-			});
-			window.scrollTo(0, 0);
-		}
-	}, {
-		key: "render",
-		value: function render() {
-			return _react2.default.createElement(
-				"div",
-				null,
-				_react2.default.createElement(_TodoForm2.default, { items: this.state.items, setItems: this.setItems, ref: "todoForm" }),
-				_react2.default.createElement(_TodoList2.default, { items: this.state.items, setItems: this.setItems, fillForm: this.fillForm })
-			);
-		}
-	}]);
-
-	return TodoApp;
+  return TodoApp;
 }(_react.Component);
 
 exports.default = TodoApp;
@@ -106,7 +104,7 @@ exports.default = TodoApp;
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+  value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -132,150 +130,145 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var TodoForm = function (_Component) {
-	_inherits(TodoForm, _Component);
+  _inherits(TodoForm, _Component);
 
-	function TodoForm(props) {
-		_classCallCheck(this, TodoForm);
+  function TodoForm(props) {
+    _classCallCheck(this, TodoForm);
 
-		var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(TodoForm).call(this, props));
+    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(TodoForm).call(this, props));
 
-		_this.state = {
-			title: '',
-			text: '',
-			errors: false,
-			edit: false
-		};
+    _this.state = {
+      title: '',
+      text: '',
+      errors: false,
+      edit: false
+    };
 
-		_this.onChange = _this.onChange.bind(_this);
-		_this.onChangeText = _this.onChangeText.bind(_this);
-		_this.handleSubmit = _this.handleSubmit.bind(_this);
-		return _this;
-	}
+    _this.onChange = _this.onChange.bind(_this);
+    _this.onChangeText = _this.onChangeText.bind(_this);
+    _this.handleSubmit = _this.handleSubmit.bind(_this);
+    return _this;
+  }
 
-	_createClass(TodoForm, [{
-		key: 'handleSubmit',
-		value: function handleSubmit(e) {
+  _createClass(TodoForm, [{
+    key: 'handleSubmit',
+    value: function handleSubmit(e) {
+      e.preventDefault();
+      var self = this;
+      var url = '/';
 
-			e.preventDefault();
+      if (this.state.edit) url += 'edit/' + self.state.id;else url += 'add';
 
-			var self = this;
-			var url = '/';
+      _jquery2.default.ajax({
+        url: url,
+        dataType: 'json',
+        type: 'post',
+        data: this.state,
+        cache: false,
+        success: function success(data) {
+          console.log("ajax response");
 
-			if (this.state.edit) url += 'edit/' + self.state.id;else url += 'add';
+          if (typeof data.errors != "undefined") {
+            self.setState({
+              errors: data.errors
+            });
+          } else {
 
-			_jquery2.default.ajax({
-				url: url,
-				dataType: 'json',
-				type: 'post',
-				data: this.state,
-				cache: false,
-				success: function success(data) {
-					console.log("ajax response");
+            var items = self.props.items;
 
-					if (typeof data.errors != "undefined") {
-						self.setState({
-							errors: data.errors
-						});
-					} else {
+            // Update Item
+            if (self.state.edit) {
 
-						var items = self.props.items;
+              var index = items.getIndexBy("_id", self.state.id);
+              if (index != -1) {
+                items[index].title = data.item.title;
+                items[index].text = data.item.text;
+              }
+            }
+            // Create Item
+            else {
+                items.unshift(data.item);
+              }
 
-						// Update Item
-						if (self.state.edit) {
+            self.props.setItems(items);
+            self.setState({
+              title: '',
+              text: '',
+              errors: false,
+              edit: false
+            });
+          }
+        }
+      });
 
-							var index = items.getIndexBy("_id", self.state.id);
-							if (index != -1) {
-								items[index].title = data.item.title;
-								items[index].text = data.item.text;
-							}
-						}
-						// Create Item
-						else {
-								items.unshift(data.item);
-							}
+      return;
+    }
+  }, {
+    key: 'onChange',
+    value: function onChange(e) {
+      this.setState({
+        title: e.target.value
+      });
+    }
+  }, {
+    key: 'onChangeText',
+    value: function onChangeText(e) {
+      this.setState({
+        text: e.target.value
+      });
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var fields = ['title', 'text'];
+      var fieldsClassNames = {};
+      var fieldsReports = {};
 
-						self.props.setItems(items);
-						self.setState({
-							title: '',
-							text: '',
-							errors: false,
-							edit: false
-						});
-					}
-				}
-			});
+      var buttonTitle = this.state.edit ? "Edit" : "Add";
 
-			return;
-		}
-	}, {
-		key: 'onChange',
-		value: function onChange(e) {
+      for (var i = 0; i < fields.length; i++) {
+        var field = fields[i];
 
-			this.setState({
-				title: e.target.value
-			});
-		}
-	}, {
-		key: 'onChangeText',
-		value: function onChangeText(e) {
+        if (typeof this.state.errors[field] != "undefined") {
+          fieldsClassNames[field] = "report";
+          fieldsReports[field] = this.state.errors[field];
+        } else {
+          fieldsClassNames[field] = "report hidden";
+          fieldsReports[field] = "";
+        }
+      }
 
-			this.setState({
-				text: e.target.value
-			});
-		}
-	}, {
-		key: 'render',
-		value: function render() {
+      return _react2.default.createElement(
+        'form',
+        { onSubmit: this.handleSubmit },
+        _react2.default.createElement(
+          'label',
+          null,
+          'Title:'
+        ),
+        _react2.default.createElement('input', { type: 'text', ref: 'title', onChange: this.onChange, value: this.state.title }),
+        _react2.default.createElement(
+          'div',
+          { className: fieldsClassNames.title, ref: 'message_title' },
+          fieldsReports.title
+        ),
+        _react2.default.createElement(
+          'label',
+          null,
+          'Text:'
+        ),
+        _react2.default.createElement('textarea', { ref: 'text', onChange: this.onChangeText, value: this.state.text }),
+        _react2.default.createElement(
+          'div',
+          { className: fieldsClassNames.text, ref: 'message_text' },
+          fieldsReports.text
+        ),
+        _react2.default.createElement('input', { type: 'submit', value: buttonTitle })
+      );
+    }
+  }]);
 
-			var fields = ['title', 'text'];
-			var fieldsClassNames = {};
-			var fieldsReports = {};
-
-			var buttonTitle = this.state.edit ? "Edit" : "Add";
-
-			for (var i = 0; i < fields.length; i++) {
-				var field = fields[i];
-
-				if (typeof this.state.errors[field] != "undefined") {
-					fieldsClassNames[field] = "report";
-					fieldsReports[field] = this.state.errors[field];
-				} else {
-					fieldsClassNames[field] = "report hidden";
-					fieldsReports[field] = "";
-				}
-			}
-
-			return _react2.default.createElement(
-				'form',
-				{ onSubmit: this.handleSubmit },
-				_react2.default.createElement(
-					'label',
-					null,
-					'Title:'
-				),
-				_react2.default.createElement('input', { type: 'text', ref: 'title', onChange: this.onChange, value: this.state.title }),
-				_react2.default.createElement(
-					'div',
-					{ className: fieldsClassNames.title, ref: 'message_title' },
-					fieldsReports.title
-				),
-				_react2.default.createElement(
-					'label',
-					null,
-					'Text:'
-				),
-				_react2.default.createElement('textarea', { ref: 'text', onChange: this.onChangeText, value: this.state.text }),
-				_react2.default.createElement(
-					'div',
-					{ className: fieldsClassNames.text, ref: 'message_text' },
-					fieldsReports.text
-				),
-				_react2.default.createElement('input', { type: 'submit', value: buttonTitle })
-			);
-		}
-	}]);
-
-	return TodoForm;
+  return TodoForm;
 }(_react.Component);
 
 exports.default = TodoForm;
@@ -284,7 +277,7 @@ exports.default = TodoForm;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+  value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -310,83 +303,81 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var TodoList = function (_Component) {
-	_inherits(TodoList, _Component);
+  _inherits(TodoList, _Component);
 
-	function TodoList(props) {
-		_classCallCheck(this, TodoList);
+  function TodoList(props) {
+    _classCallCheck(this, TodoList);
 
-		var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(TodoList).call(this, props));
+    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(TodoList).call(this, props));
 
-		_this.editItem = _this.editItem.bind(_this);
-		_this.deleteItem = _this.deleteItem.bind(_this);
-		_this.updateItemProperty = _this.updateItemProperty.bind(_this);
-		return _this;
-	}
+    _this.editItem = _this.editItem.bind(_this);
+    _this.deleteItem = _this.deleteItem.bind(_this);
+    _this.updateItemProperty = _this.updateItemProperty.bind(_this);
+    return _this;
+  }
 
-	_createClass(TodoList, [{
-		key: "editItem",
-		value: function editItem(item) {
-			this.props.fillForm(item);
-		}
-	}, {
-		key: "deleteItem",
-		value: function deleteItem(item) {
-			var self = this;
-			var items = this.props.items;
-			var index = items.getIndexBy("_id", item._id);
+  _createClass(TodoList, [{
+    key: "editItem",
+    value: function editItem(item) {
+      this.props.fillForm(item);
+    }
+  }, {
+    key: "deleteItem",
+    value: function deleteItem(item) {
+      var self = this;
+      var items = this.props.items;
+      var index = items.getIndexBy("_id", item._id);
 
-			if (index != -1) {
+      if (index != -1) {
+        this.serverRequest = _jquery2.default.ajax({
+          url: "/delete/" + item._id,
+          dataType: 'json',
+          type: 'post',
+          cache: false,
+          success: function success(data) {
+            if (!data.err) {
+              items.splice(index, 1);
+              self.props.setItems(items);
+            }
+          }
+        });
+      }
+    }
+  }, {
+    key: "updateItemProperty",
+    value: function updateItemProperty(item, property, value) {
+      var self = this;
+      var items = this.props.items;
+      var index = items.getIndexBy("_id", item._id);
 
-				this.serverRequest = _jquery2.default.ajax({
-					url: "/delete/" + item._id,
-					dataType: 'json',
-					type: 'post',
-					cache: false,
-					success: function success(data) {
-						if (!data.err) {
-							items.splice(index, 1);
-							self.props.setItems(items);
-						}
-					}
-				});
-			}
-		}
-	}, {
-		key: "updateItemProperty",
-		value: function updateItemProperty(item, property, value) {
-			var self = this;
-			var items = this.props.items;
-			var index = items.getIndexBy("_id", item._id);
+      if (index != -1) {
+        this.serverRequest = _jquery2.default.ajax({
+          url: "/update_property/" + item._id + "/" + property + "/" + value,
+          dataType: 'json',
+          type: 'post',
+          cache: false,
+          success: function success(data) {
+            items[index][property] = data.item[property];
+            self.props.setItems(items);
+          }
+        });
+      }
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var self = this;
+      return _react2.default.createElement(
+        "div",
+        { className: "list" },
+        this.props.items.map(function (result) {
+          return _react2.default.createElement(_TodoListItem2.default, { key: result._id, data: result, deleteItem: self.deleteItem, editItem: self.editItem, updateItemProperty: self.updateItemProperty });
+        })
+      );
+    }
+  }]);
 
-			if (index != -1) {
-
-				this.serverRequest = _jquery2.default.ajax({
-					url: "/update_property/" + item._id + "/" + property + "/" + value,
-					dataType: 'json',
-					type: 'post',
-					cache: false,
-					success: function success(data) {
-						items[index][property] = data.item[property];
-						self.props.setItems(items);
-					}
-				});
-			}
-		}
-	}, {
-		key: "render",
-		value: function render() {
-			var self = this;
-			return _react2.default.createElement(
-				"div",
-				{ className: "list" },
-				this.props.items.map(function (result) {
-					return _react2.default.createElement(_TodoListItem2.default, { key: result._id, data: result, deleteItem: self.deleteItem, editItem: self.editItem, updateItemProperty: self.updateItemProperty });
-				})
-			);
-		}
-	}]);
-
-	return TodoList;
+  return TodoList;
 }(_react.Component);
 
 exports.default = TodoList;
@@ -395,7 +386,7 @@ exports.default = TodoList;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+  value: true
 });
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
@@ -415,85 +406,85 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var TodoListItem = function (_Component) {
-	_inherits(TodoListItem, _Component);
+  _inherits(TodoListItem, _Component);
 
-	function TodoListItem(props) {
-		_classCallCheck(this, TodoListItem);
+  function TodoListItem(props) {
+    _classCallCheck(this, TodoListItem);
 
-		return _possibleConstructorReturn(this, Object.getPrototypeOf(TodoListItem).call(this, props));
-		//this.updateItemProperty = this.updateItemProperty.bind(this);
-	}
+    return _possibleConstructorReturn(this, Object.getPrototypeOf(TodoListItem).call(this, props));
+    //this.updateItemProperty = this.updateItemProperty.bind(this);
+  }
 
-	_createClass(TodoListItem, [{
-		key: "deleteItem",
-		value: function deleteItem(item) {
-			if (typeof confirm == "function") if (confirm("Do You really want to delete item?")) {
-				this.props.deleteItem(item);
-			} else this.props.deleteItem(item);
-		}
-	}, {
-		key: "editItem",
-		value: function editItem(item) {
-			this.props.editItem(item);
-		}
-	}, {
-		key: "updateItemProperty",
-		value: function updateItemProperty(item) {
-			var completed;
-			if (_typeof(item.completed) != undefined && item.completed) {
-				completed = false;
-			} else completed = true;
+  _createClass(TodoListItem, [{
+    key: "deleteItem",
+    value: function deleteItem(item) {
+      if (typeof confirm == "function") if (confirm("Do You really want to delete item?")) {
+        this.props.deleteItem(item);
+      } else this.props.deleteItem(item);
+    }
+  }, {
+    key: "editItem",
+    value: function editItem(item) {
+      this.props.editItem(item);
+    }
+  }, {
+    key: "updateItemProperty",
+    value: function updateItemProperty(item) {
+      var completed;
+      if (_typeof(item.completed) != undefined && item.completed) {
+        completed = false;
+      } else completed = true;
 
-			this.props.updateItemProperty(item, "completed", completed);
-		}
-	}, {
-		key: "render",
-		value: function render() {
-			var item = this.props.data;
-			var checkClassName = item.completed ? "fa fa-check-square-o" : "fa fa-square-o";
-			var itemClassName = item.completed ? "item item_completed" : "item";
+      this.props.updateItemProperty(item, "completed", completed);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var item = this.props.data;
+      var checkClassName = item.completed ? "fa fa-check-square-o" : "fa fa-square-o";
+      var itemClassName = item.completed ? "item item_completed" : "item";
 
-			return _react2.default.createElement(
-				"div",
-				{ className: itemClassName },
-				_react2.default.createElement(
-					"div",
-					{ className: "check_con" },
-					_react2.default.createElement(
-						"div",
-						{ className: "check", onClick: this.updateItemProperty.bind(this, item) },
-						_react2.default.createElement("i", { className: checkClassName })
-					)
-				),
-				_react2.default.createElement(
-					"div",
-					{ className: "texts" },
-					_react2.default.createElement(
-						"div",
-						{ className: "title" },
-						item.title
-					),
-					_react2.default.createElement(
-						"div",
-						null,
-						item.text
-					),
-					_react2.default.createElement(
-						"div",
-						{ className: "delete", onClick: this.deleteItem.bind(this, item) },
-						_react2.default.createElement("i", { className: "fa fa-times" })
-					),
-					_react2.default.createElement(
-						"div",
-						{ className: "edit", onClick: this.editItem.bind(this, item) },
-						_react2.default.createElement("i", { className: "fa fa-pencil" })
-					)
-				)
-			);
-		}
-	}]);
+      return _react2.default.createElement(
+        "div",
+        { className: itemClassName },
+        _react2.default.createElement(
+          "div",
+          { className: "check_con" },
+          _react2.default.createElement(
+            "div",
+            { className: "check", onClick: this.updateItemProperty.bind(this, item) },
+            _react2.default.createElement("i", { className: checkClassName })
+          )
+        ),
+        _react2.default.createElement(
+          "div",
+          { className: "texts" },
+          _react2.default.createElement(
+            "div",
+            { className: "title" },
+            item.title
+          ),
+          _react2.default.createElement(
+            "div",
+            null,
+            item.text
+          ),
+          _react2.default.createElement(
+            "div",
+            { className: "delete", onClick: this.deleteItem.bind(this, item) },
+            _react2.default.createElement("i", { className: "fa fa-times" })
+          ),
+          _react2.default.createElement(
+            "div",
+            { className: "edit", onClick: this.editItem.bind(this, item) },
+            _react2.default.createElement("i", { className: "fa fa-pencil" })
+          )
+        )
+      );
+    }
+  }]);
 
-	return TodoListItem;
+  return TodoListItem;
 }(_react.Component);
 
 exports.default = TodoListItem;
@@ -502,12 +493,12 @@ exports.default = TodoListItem;
 "use strict";
 
 Array.prototype.getIndexBy = function (name, value) {
-	for (var i = 0; i < this.length; i++) {
-		if (this[i][name] == value) {
-			return i;
-		}
-	}
-	return -1;
+  for (var i = 0; i < this.length; i++) {
+    if (this[i][name] == value) {
+      return i;
+    }
+  }
+  return -1;
 };
 
 },{}],7:[function(require,module,exports){
