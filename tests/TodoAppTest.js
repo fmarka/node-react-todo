@@ -58,7 +58,6 @@ describe('TodoApp', () => {
   });
 
   it('Ensure that completed items quantity is equal to rendered completed items quantity', () => {
-
     let completed = 0;
     let renderedCompleted = 0;
 
@@ -73,33 +72,26 @@ describe('TodoApp', () => {
         renderedCompleted++;
     })
     expect(renderedCompleted).to.equal(completed);
-
   });
 
   it('Should delete an item', () => {
-
     let deleteIcon = items[0].querySelector(".fa-times");
     Simulate.click(deleteIcon);
     expect(items.length).to.equal(2);
-
   });
 
   it('Should change button title on item edit', () => {
-
     let editIcon = items[0].querySelector(".fa-pencil");
     Simulate.click(editIcon);
     expect(button[0].value).to.equal("Edit");
-
   });
 
   it('Should submit form', () => {
-
     var spy = sinon.spy(jQuery, 'ajax');
     let form = renderedDOM().querySelector("form");
     Simulate.submit(form);
     expect(spy).to.have.been.called;
     jQuery.ajax.restore();
-
   });
 
 });
