@@ -1,7 +1,7 @@
-
 // Load packages
-var express = require('express');
-var bodyParser = require('body-parser');
+import express from "express"
+import bodyParser from 'body-parser';
+import exphbs from 'express-handlebars';
 
 // Create Express application
 var app = express();
@@ -11,15 +11,20 @@ app.use(bodyParser.urlencoded({
 	extended: true
 }));
 
-app.use(express.static('public'));
-
-// Create Express router
-var router = express.Router();
+app.use(express.static(__dirname + '/public'));
+app.engine('handlebars', exphbs({
+	defaultLayout: 'main'
+}));
+app.set('view engine', 'handlebars');
 
 // Load routes
-require("./routes/routes")( app, router );
+import routes from './routes/routes';
+// Register Routes with /
+app.use('/', routes);
 
 // Start the server
-app.listen(process.env.PORT || 3000, function(){
-  console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env );
+app.listen(process.env.PORT || 3000, function() {
+	console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
 });
+
+module.exports = app;

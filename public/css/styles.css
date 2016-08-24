@@ -45,6 +45,37 @@ h1{
     background: #999573;
 }
 
+.list .item_completed, .list .item_completed:hover{
+    background: #beba99;
+}
+
+.list .item .check_con{
+    width: 30px;
+    position: absolute;
+    left: 10px;
+    top: 28px;
+}
+
+.list .item .check{
+    height: 30px;
+    width: 30px;
+    cursor:pointer;
+    text-align: center;    
+}
+
+.list .item .check i{
+    display: inline-block;
+    margin-top: 5px;
+}
+
+
+
+.list .item .texts{
+    margin-left:30px;
+}
+
+
+
 .list .item .title{
     font-weight: normal;
 }
@@ -80,6 +111,7 @@ h1{
     display: inline-block;
     margin-top: 5px;
 }
+
 
 
 .list .item .delete:hover, .list .item .edit:hover{
