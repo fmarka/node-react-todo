@@ -66,7 +66,6 @@ router.post('/add', function(req, res) {
 
 });
 
-
 // Edit Todos' Item
 router.post('/edit/:id', function(req, res) {
 
@@ -102,7 +101,6 @@ router.post('/edit/:id', function(req, res) {
   });
 });
 
-
 // Delete Todo Item
 router.post('/delete/:id', function(req, res) {
 
@@ -119,7 +117,6 @@ router.post('/delete/:id', function(req, res) {
   });
 
 });
-
 
 // Update Item Property
 router.post('/update_property/:id/:property/:value', function(req, res) {

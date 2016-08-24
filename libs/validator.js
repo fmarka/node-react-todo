@@ -2,7 +2,6 @@
 module.exports = {
 
   validate(req, fieldNames) {
-
     var err = false;
     var errors = {};
     var values = {};

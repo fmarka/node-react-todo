@@ -5,6 +5,6 @@ import TodoApp from "./components/TodoApp"
 var initialState = JSON.parse(document.getElementById('initial-state').innerHTML)
 
 ReactDom.render(
-	<TodoApp items={initialState}/>,
-	document.getElementById('react-app')
+  <TodoApp items={initialState}/>,
+  document.getElementById('react-app')
 );

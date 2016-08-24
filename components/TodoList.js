@@ -5,28 +5,22 @@ import $ from "jquery";
 export default class TodoList extends Component {
 
   constructor(props) {
-
     super(props);
     this.editItem = this.editItem.bind(this);
     this.deleteItem = this.deleteItem.bind(this);
     this.updateItemProperty = this.updateItemProperty.bind(this);
-
   }
 
   editItem(item) {
-
     this.props.fillForm(item);
-
   }
 
   deleteItem(item) {
-
     var self = this;
     var items = this.props.items;
     var index = items.getIndexBy("_id", item._id);
 
     if (index != -1) {
-
         this.serverRequest = $.ajax({
         url: "/delete/" + item._id,
         dataType: 'json',
@@ -48,7 +42,6 @@ export default class TodoList extends Component {
     var index = items.getIndexBy("_id", item._id);
 
     if (index != -1) {
-
       this.serverRequest = $.ajax({
         url: "/update_property/" + item._id + "/" + property + "/" + value,
         dataType: 'json',
